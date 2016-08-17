@@ -482,19 +482,25 @@ class AccessManager(Base):
 
         # convert access to integers
         required_access = my._get_access_enum(required_access)
+        print "required_access %s" % required_access
         user_access = my._get_access_enum(user_access)
+        print "user_access %s" % user_access
 
 
         
         if is_match:
             if user_access == required_access:
+                print "condition 1: user_access == required_access"
                 return True
             else:
+                print "condition 2: user_access != required_access"
                 return False
 
         if user_access >= required_access:
+            print "condition 3 user_access >= required_access"
             return True
         else:
+            print "condition 4 user_access < required_access"
             return False
 
 

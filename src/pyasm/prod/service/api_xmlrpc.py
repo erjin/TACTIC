@@ -97,6 +97,7 @@ def get_simple_cmd(my, meth, ticket, args):
                 if Config.get_value("security", "api_method_restricted") == "true":
                     security = Environment.get_security()
                     access = security.check_access("api_method", meth.__name__, "allow", default="allow")
+                    print "third check_access for %s  result: %s " % (meth.__name__, access)
                     if not access:
                        raise ApiException("Access denied")
                 
@@ -192,6 +193,8 @@ def get_full_cmd(my, meth, ticket, args):
             if Config.get_value("security", "api_method_restricted") == "true":
                 security = Environment.get_security()
                 access = security.check_access("api_method", meth.__name__, "allow", default="allow")
+                print "third check_access for %s  result: %s " % (meth.__name__, access)
+
                 if not access:
                    raise ApiException("Access denied")
 
@@ -5264,6 +5267,7 @@ class ApiXMLRPC(BaseApiXMLRPC):
         if Config.get_value("security", "api_cmd_restricted") == "true":
             security = Environment.get_security()
             access = security.check_access("api_cmd", class_name, "allow", default="allow")
+            print "third check_access for %s  result: %s " % (class_name, access)
             if not access:
                raise ApiException("Access denied") 
         

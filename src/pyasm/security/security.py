@@ -1757,6 +1757,8 @@ class Security(Base):
     def check_access(my, group, key, access, value=None, is_match=False, default="edit"):
         '''convenience function to check the security level to the access
         manager'''
+        print " "
+        print "I am in check_access group:%s access:%s value:%s is_match:%s " % (group, access, value, is_match)
         return my._access_manager.check_access(group, key, access, value, is_match, default=default)
 
     def get_access(my, group, key, default=None):
